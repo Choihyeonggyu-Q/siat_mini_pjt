@@ -1,4 +1,5 @@
 import todo.front.FrontController;
+import todo.view.TodoView;
 
 public class TodoFrontMain {
     public static void main(String[] args) {
@@ -7,5 +8,8 @@ public class TodoFrontMain {
         // TodoInsertController insertCtrl = front.requestProcess(2);
         // TodoDeleteController deleteCtrl = front.requestProcess(3);
         // TodoUpdateController updateCtrl = front.requestProcess(4);
+
+        TodoView view = new TodoView();
+        view.menu();
     }
 }
