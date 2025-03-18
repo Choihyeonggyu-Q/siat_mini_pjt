@@ -5,8 +5,12 @@ import todo.service.TodoService;
 public class TodoDeleteController {
     private TodoService service;
 
+    public TodoDeleteController(TodoService service){
+        this.service = service;
+    }
+
     public TodoDeleteController(){
-        service = new TodoService();
+        // service = new TodoService();
     }
 
     public int deleteTodo(int seq){

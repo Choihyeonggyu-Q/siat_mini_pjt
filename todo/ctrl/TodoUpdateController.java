@@ -6,14 +6,18 @@ import todo.service.TodoService;
 public class TodoUpdateController {
     private TodoService service;
 
-    public TodoUpdateController(){
-        service = new TodoService();
+    public TodoUpdateController(TodoService service){
+        this.service = service;
     }
 
-    public int updateTodo(TodoRequestDTO request){
+    public TodoUpdateController(){
+        // service = new TodoService();
+    }
+
+    public int updateTodo(int seq, TodoRequestDTO request){
         
         System.out.println(">>> debug updateTodo");
         // TodoResponseDTO resService = service.selectService(seq);
-        return service.updateService(request);
+        return service.updateService(seq, request);
     }
 }

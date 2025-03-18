@@ -7,8 +7,12 @@ public class TodoInsertController {
 
     private TodoService service;
 
+    public TodoInsertController(TodoService service){
+        this.service = service;
+    }
+
     public TodoInsertController(){
-        service = new TodoService();
+        // service = new TodoService();
     }
 
     public int insertTodo(TodoRequestDTO request){

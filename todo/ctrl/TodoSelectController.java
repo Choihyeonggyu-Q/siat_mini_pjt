@@ -7,8 +7,12 @@ import todo.service.TodoService;
 public class TodoSelectController {
     private TodoService service;
 
+    public TodoSelectController(TodoService service){
+        this.service = service;
+    }
+
     public TodoSelectController(){
-        service = new TodoService();
+        // service = new TodoService();
     }
 
     public List<TodoResponseDTO> selectTodo(){

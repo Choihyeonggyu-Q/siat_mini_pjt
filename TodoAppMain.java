@@ -49,7 +49,7 @@ public class TodoAppMain {
 
         // 수정
         TodoUpdateController updateCtrl = new TodoUpdateController();
-        int upResponse = updateCtrl.updateTodo(request);
+        int upResponse = updateCtrl.updateTodo(1,request);
         System.out.println(upResponse);
 
         //전체 보기

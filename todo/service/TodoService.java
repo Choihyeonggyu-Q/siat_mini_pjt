@@ -32,9 +32,9 @@ public class TodoService {
         return dao.deleteRow(seq);
     }
 
-    public int updateService(TodoRequestDTO requset){
+    public int updateService(int seq, TodoRequestDTO requset){
         System.out.println(">>> debug updateService");
-        return dao.updateRow(requset);
+        return dao.updateRow(seq, requset);
     }
 
     public List<TodoResponseDTO> selectService(){
