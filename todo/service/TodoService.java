@@ -1,5 +1,7 @@
 package todo.service;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import todo.model.dao.TodoDAO;
 import todo.model.domain.TodoRequestDTO;
@@ -21,7 +23,7 @@ public class TodoService {
         return dao.insertRow(reqeust);
     }
 
-    public TodoResponseDTO selectService(int seq){
+    public Optional<TodoResponseDTO> selectService(int seq){
         System.out.println(">>>> debug selectService");
         // TodoResponseDTO resDao = dao.selectDao(num);
         return dao.selectRow(seq);
@@ -32,12 +34,12 @@ public class TodoService {
         return dao.deleteRow(seq);
     }
 
-    public int updateService(int seq, TodoRequestDTO requset){
+    public int updateService(Map<String, Object> map){
         System.out.println(">>> debug updateService");
-        return dao.updateRow(seq, requset);
+        return dao.updateRow(map);
     }
 
-    public List<TodoResponseDTO> selectService(){
+    public Optional<List<TodoResponseDTO>> selectService(){
         System.out.println(">>> debug selectService_all");
         return dao.selectRow();
     }

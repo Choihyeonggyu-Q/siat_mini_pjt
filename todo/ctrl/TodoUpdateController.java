@@ -1,5 +1,7 @@
 package todo.ctrl;
 
+import java.util.Map;
+
 import todo.model.domain.TodoRequestDTO;
 import todo.service.TodoService;
 
@@ -14,10 +16,10 @@ public class TodoUpdateController {
         // service = new TodoService();
     }
 
-    public int updateTodo(int seq, TodoRequestDTO request){
-        
+    // public int updateTodo(int seq, TodoRequestDTO request){
+    public int updateTodo(Map<String, Object> map){
         System.out.println(">>> debug updateTodo");
         // TodoResponseDTO resService = service.selectService(seq);
-        return service.updateService(seq, request);
+        return service.updateService(map);
     }
 }

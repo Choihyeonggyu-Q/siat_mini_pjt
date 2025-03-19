@@ -1,5 +1,6 @@
 package todo.ctrl;
 import java.util.List;
+import java.util.Optional;
 
 import todo.model.domain.TodoResponseDTO;
 import todo.service.TodoService;
@@ -18,7 +19,13 @@ public class TodoSelectController {
     public List<TodoResponseDTO> selectTodo(){
         
         System.out.println(">>> debug selectTodo_all");
-        // TodoResponseDTO resService = service.selectService(seq);
-        return service.selectService();
+        
+        Optional<List<TodoResponseDTO>> response = service.selectService();
+        if(response.isPresent()){
+            return response.get();
+        }else{
+            return null;
+        }
+        // return service.selectService();
     }
 }

@@ -38,7 +38,7 @@ public class TodoAppMain {
         // TodoService(selectService) -> TodoDao(selectDao) 작업을 수행하고
         // 실행 결과(TodoResponseDTO)를 반환받는다.
         TodoReadController readCtrl = new TodoReadController();
-        TodoResponseDTO response = readCtrl.selectTodo(1);
+        TodoResponseDTO response = readCtrl.readTodo(1);
         System.out.println(response);
 
 
@@ -49,8 +49,8 @@ public class TodoAppMain {
 
         // 수정
         TodoUpdateController updateCtrl = new TodoUpdateController();
-        int upResponse = updateCtrl.updateTodo(1,request);
-        System.out.println(upResponse);
+        // int upResponse = updateCtrl.updateTodo(1,request);
+        // System.out.println(upResponse);
 
         //전체 보기
         TodoSelectController selectCtrl = new TodoSelectController();
