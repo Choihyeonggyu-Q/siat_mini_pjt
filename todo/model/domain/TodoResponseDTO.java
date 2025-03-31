@@ -16,5 +16,6 @@ public class TodoResponseDTO {
     private String startDate;
     private String endDate;
     private int check;
+    private String status;
     private int priority;
 }

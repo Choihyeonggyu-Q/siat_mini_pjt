@@ -1,7 +1,8 @@
 {
     "java.project.referencedLibraries": [
         "c:\\Users\\훈련용1-1\\Downloads\\lombok.jar",
-        "c:\\Users\\User\\Downloads\\lombok.jar"
+        "c:\\Users\\User\\Downloads\\lombok.jar",
+        "c:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\jdbc\\lib\\ojdbc6.jar"
     ],
     "java.project.sourcePaths": [
         "."

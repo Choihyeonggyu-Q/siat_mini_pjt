@@ -12,5 +12,6 @@ public class TodoRequestDTO {
     private String content;
     private String startDate;
     private String endDate;
+    private String status;
     private int priority;
 }
