@@ -23,10 +23,10 @@ public class TodoDAO {
                                                 .seq(i++)
                                                 .title(request.getTitle())
                                                 .content(request.getContent())
-                                                .startDate(request.getStartDate())                                                
-                                                .endDate(request.getEndDate())
+                                                // .startDate(request.getStartDate())                                                
+                                                // .endDate(request.getEndDate())
                                                 .priority(request.getPriority())
-                                                .check(0)
+                                                // .check(0)
                                                 .build();
         list.add(response);
 
@@ -93,7 +93,7 @@ public class TodoDAO {
         for(int i = 0; i < list.size(); i++){
             if (list.get(i).getSeq() == (Integer)(map.get("seq"))) {
                 list.get(i).setContent((String)(map.get("content")));
-                list.get(i).setCheck((Integer)(map.get("check")));
+                list.get(i).setStatus((String)(map.get("status")));
                 flag = 1;
             }
         }

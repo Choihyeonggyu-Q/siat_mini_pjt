@@ -1,3 +1,5 @@
+package todo.model.dao;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,24 +13,13 @@ import java.util.Optional;
 import todo.model.domain.TodoRequestDTO;
 import todo.model.domain.TodoResponseDTO;
 
-public class JdbcDao {
-    // try {
-    //      1. Driver loading  - 1번만 실행
-    //      2. Connection
-    //      3. Statement, PreparedStatement(SQL)
-    //      4. ResultSet excuteQuery()  - Select, 
-    //         int excuteUpdate() - Insert, Update, Delete
-    //      5. ResultSet Handling
-    //      6. Connection close
-    // } catch(){
-          
-    // }
-    
+public class TodoOracleDao {
     public static final String DRIVER   = "oracle.jdbc.driver.OracleDriver";
     public static final String URL      = "jdbc:oracle:thin:@localhost:1521/xe";
     public static final String USER     = "hr";
     public static final String PASSWORD = "hr";
-    public JdbcDao(){
+
+    public TodoOracleDao(){
         try{
             Class.forName(DRIVER);
             System.out.println("1. Driver loading OK");
@@ -62,6 +53,7 @@ public class JdbcDao {
 
         return flag;
     }
+
     public int deleteRow(int seq){
         System.out.println(" >>> dao deleteRow");
         int flag = 0;
@@ -85,6 +77,7 @@ public class JdbcDao {
 
         return flag;
     }
+
     public int updateRow(Map<String, Object> map){
         System.out.println(">>> dao updateRow");
         int flag = 0;
@@ -112,13 +105,14 @@ public class JdbcDao {
 
         return flag;
     }
-    public List<TodoResponseDTO> selectRow(){ // Optional 리턴 메서드
+
+    public Optional<List<TodoResponseDTO>> selectRow(){ // Optional 리턴 메서드
         System.out.println(">>> debug selectDao");
         List<TodoResponseDTO> list = new ArrayList<>();
         Connection          conn  = null;
         PreparedStatement   pstmt = null;
         ResultSet           rset  = null;
-        String selectSQL = "SELECT SEQ, TITLE, CONTENT, TO_CHAR(STARTDATE, 'YY/MM/DD') AS SD, STATUS, ENDDATE, PRIORITY FROM JDBC_TODO_TBL";
+        String selectSQL = "SELECT SEQ, TITLE, CONTENT, STARTDATE, STATUS, ENDDATE, PRIORITY FROM JDBC_TODO_TBL";
         try{
             conn  = DriverManager.getConnection(URL, USER, PASSWORD);
             pstmt = conn.prepareStatement(selectSQL);
@@ -128,9 +122,9 @@ public class JdbcDao {
                                                             .seq(rset.getInt(1))
                                                             .title(rset.getString(2))
                                                             .content(rset.getString(3))
-                                                            // .startDate(rset.getString("SD"))
-                                                            // .status(rset.getString(5))
-                                                            // .endDate(rset.getString(6))
+                                                            .startDate(rset.getDate(4))
+                                                            .status(rset.getString(5))
+                                                            .endDate(rset.getDate(6))
                                                             .priority(rset.getInt(7))
                                                             .build();
                 list.add(response);
@@ -144,8 +138,9 @@ public class JdbcDao {
                 e.printStackTrace();
             }
         }
-        return list;
+        return list.isEmpty() ? Optional.empty() : Optional.of(list);
     }
+
     public Optional<TodoResponseDTO> selectRow(int seq){ // Optional 리턴 메서드
         System.out.println(">>> debug selectDao");
         Optional<TodoResponseDTO> response = Optional.empty(); // Optional 객체 생성
@@ -163,9 +158,9 @@ public class JdbcDao {
                                                 .seq(rset.getInt(1))
                                                 .title(rset.getString(2))
                                                 .content(rset.getString(3))
-                                                // .startDate(rset.getString(4))
-                                                // .status(rset.getString(5))
-                                                // .endDate(rset.getString(6))
+                                                .startDate(rset.getDate(4))
+                                                .status(rset.getString(5))
+                                                .endDate(rset.getDate(6))
                                                 .priority(rset.getInt(7))
                                                 .build());
             }

@@ -34,21 +34,19 @@ public class FrontController {
         return list;
     }
 
-    public int register(String title, String content, String startDate, String endDate, int priorty){
+    public int register(String title, String content, int priorty){
         System.out.println(">>>> FrontController register");
         // TodoInsertController insertCtrl = new TodoInsertController();
         TodoInsertController insertCtrl = (TodoInsertController)factory.getCtrl("register");
         TodoRequestDTO request = TodoRequestDTO.builder()
                                             .title(title)
                                             .content(content)
-                                            .startDate(startDate)
-                                            .endDate(endDate)
                                             .priority(priorty)
                                             .build();
         return insertCtrl.insertTodo(request);
     }
 
-    public int update(int seq, String content, int check){
+    public int update(int seq, String content, String check){
         System.out.println(">>>> FrontController update");
         // TodoUpdateController updateCtrl = new TodoUpdateController();
         TodoUpdateController updateCtrl = (TodoUpdateController)factory.getCtrl("update");
@@ -58,7 +56,7 @@ public class FrontController {
         Map<String, Object> map = new HashMap<>();
         map.put("seq", seq);
         map.put("content", content);
-        map.put("check", check);
+        map.put("status", check);
         // return updateCtrl.updateTodo(seq, request);
         return updateCtrl.updateTodo(map);
     }

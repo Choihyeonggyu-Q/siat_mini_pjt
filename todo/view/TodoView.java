@@ -72,14 +72,10 @@ public class TodoView {
         String title = scan.nextLine();
         System.out.print("내용 : ");
         String content = scan.nextLine();
-        System.out.print("시작일 : ");
-        String startDate = scan.nextLine();
-        System.out.print("종료일 : ");
-        String endDate = scan.nextLine();
         System.out.print("우선순위 : ");
         int priority = scan.nextInt();
 
-        int insertFlag = front.register(title, content, startDate, endDate, priority);
+        int insertFlag = front.register(title, content, priority);
         System.out.println(insertFlag);
     }
 
@@ -98,8 +94,8 @@ public class TodoView {
 
         // scan.nextLine();
 
-        System.out.print("완료 현황 체크 완료 됐을 시에 1, 아닐 시에 0 입력");
-        int check = scan.nextInt();
+        System.out.print("완료 현황 Y, 아닐 시에 N 입력");
+        String check = scan.nextLine();
         
         int updateFlag = front.update(seq, content, check);
         System.out.println(updateFlag);

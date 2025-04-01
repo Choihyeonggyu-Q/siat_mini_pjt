@@ -4,15 +4,16 @@ import java.util.Map;
 import java.util.Optional;
 
 import todo.model.dao.TodoDAO;
+import todo.model.dao.TodoOracleDao;
 import todo.model.domain.TodoRequestDTO;
 import todo.model.domain.TodoResponseDTO;
 
 public class TodoService {
 
-    private TodoDAO dao;
+    private TodoOracleDao dao;
     
     public TodoService(){
-        dao = new TodoDAO();
+        dao = new TodoOracleDao();
     }
 
     public int insertService(TodoRequestDTO reqeust){

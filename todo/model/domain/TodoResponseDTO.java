@@ -1,5 +1,7 @@
 package todo.model.domain;
 
+import java.util.Date;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,9 +15,9 @@ public class TodoResponseDTO {
     private int seq;
     private String title;
     private String content;
-    private String startDate;
-    private String endDate;
-    private int check;
+    private Date startDate;
+    private Date endDate;
+    // private int check;
     private String status;
     private int priority;
 }
